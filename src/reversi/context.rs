@@ -15,6 +15,10 @@ impl Context {
         self.board.set(3, 4, Color::White);
         self.board.set(4, 3, Color::White);
     }
+    /// 盤面を取得する
+    pub fn get_board(&self) -> &Board {
+        &self.board
+    }
     /// どちらのターンか取得する
     pub fn get_turn(&self) -> Color {
         self.turn
