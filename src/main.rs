@@ -136,6 +136,16 @@ impl event::EventHandler<ggez::GameError> for MainState {
             reversi::color::Color::Black => &circle_black,
         };
         graphics::draw(ctx, turn_stone_circle, (glam::Vec2::new(30.0, 30.0),))?;
+        // 黒の数
+        graphics::draw(ctx, &circle_black, (glam::Vec2::new(30.0, 100.0),))?;
+        let count_black = self.game.get_count(reversi::color::Color::Black);
+        let text_count_black = graphics::Text::new(count_black.to_string());
+        graphics::draw(ctx, &text_count_black, (glam::Vec2::new(50.0, 100.0),))?;
+        // 白の数
+        let count_white = self.game.get_count(reversi::color::Color::White);
+        let text_count_white = graphics::Text::new(count_white.to_string());
+        graphics::draw(ctx, &circle_white, (glam::Vec2::new(30.0, 130.0),))?;
+        graphics::draw(ctx, &text_count_white, (glam::Vec2::new(50.0, 130.0),))?;
 
         graphics::present(ctx)?;
         timer::yield_now();

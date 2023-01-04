@@ -39,6 +39,10 @@ impl Context {
         self.turn = self.turn.rev();
         true
     }
+    /// 色のカウントを取得する
+    pub fn get_count(&self, color: Color) -> i32 {
+        self.board.get_count(color)
+    }
 }
 impl Default for Context {
     fn default() -> Self {

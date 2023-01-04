@@ -183,11 +183,26 @@ impl Board {
         }
         true
     }
+    /// 盤面をクリアする
     pub fn clear(&mut self) {
         for row in self.cells.iter_mut() {
             for cell in row.iter_mut() {
                 cell.clear()
             }
         }
+    }
+    /// 色のカウントを取得する
+    pub fn get_count(&self, color: Color) -> i32 {
+        let mut count = 0;
+        for row in self.cells.iter() {
+            for cell in row.iter() {
+                if let Some(cellcolor) = cell.get_color() {
+                    if cellcolor == color {
+                        count += 1;
+                    }
+                }
+            }
+        }
+        count
     }
 }
